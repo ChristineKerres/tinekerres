@@ -5,16 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>tinekerres.de</title>
     <style>
+      @font-face {
+        font-family: "APL";
+        src: url("fonts/APL333.ttf");
+      }
       a {
-        color: rgb(58, 15, 175);
-        font-family: Selectric;
-        font-size: 1em;
-        border-bottom: 0.1em dashed rgb(58, 15, 175);
+        color: rgb(255, 255, 255);
+        -webkit-text-stroke: 0.5px rgb(0, 0, 0);
+
+        text-shadow: 0px 0px 4px rgb(0, 0, 0);
+        font-family: APL;
+        font-size: 2em;
         text-decoration: none;
       }
+      a::-moz-selection {
+        background: rgb(0, 0, 0);
+        color: rgb(255, 255, 255);
+      }
+      a::selection {
+        background: rgb(0, 0, 0);
+        color: rgb(255, 255, 255);
+      }
       a:active {
-        color: rgb(132, 34, 253);
-        -webkit-text-stroke: 1pt rgb(132, 34, 253);
+        color: rgb(0, 0, 0);
+        -webkit-text-stroke: 1pt rgb(0, 0, 0);
       }
     </style>
   </head>
@@ -52,7 +66,7 @@
         let elapsedTime = currentTime - startTime;
         if (elapsedTime >= changeTime) {
           // Ändern Sie den aktuellen Link
-          currentLink.style.color = "orange";
+          currentLink.style.color = "black";
           currentLink.href = "tinekerres.de/portfolio";
           currentLink.textContent = "  /" + "PORTFOLIO";
           currentLink.removeEventListener("click", linkClickHandler);
