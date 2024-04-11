@@ -1,92 +1,803 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>tinekerres.de</title>
+    <title>tinekerres.de/PORTFOLIO</title>
     <style>
       @font-face {
         font-family: "APL";
         src: url("fonts/APL333.ttf");
       }
-      a {
-        color: rgb(255, 255, 255);
-        -webkit-text-stroke: 0.5px rgb(0, 0, 0);
+      @font-face {
+        font-family: "CMU-Serif";
+        src: url("fonts/cmunrm.ttf");
+      }
+      @font-face {
+        font-family: "CMU-Serif-Upright";
+        src: url("fonts/cmunui.ttf");
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: auto;
+        font-family: CMU-Serif;
+      }
 
-        text-shadow: 0px 0px 4px rgb(0, 0, 0);
-        font-family: APL;
-        font-size: 2em;
-        text-decoration: none;
+      .container-wrapper {
+        display: flex;
+        width: 100%;
+        /*align-items: stretch;*/
       }
-      a::-moz-selection {
-        background: rgb(0, 0, 0);
-        color: rgb(255, 255, 255);
+
+      .text-container {
+        flex-grow: 1;
+        overflow: hidden;
+        position: relative;
+        /*min-width: 200px;*/
+        min-width: 600px;
+
+        padding-bottom: 15px;
+        padding-right: 4px;
       }
-      a::selection {
-        background: rgb(0, 0, 0);
-        color: rgb(255, 255, 255);
+      .image-container {
+        flex-grow: 1;
+        overflow: hidden;
+        position: relative;
+        min-width: 20px;
       }
-      a:active {
+
+      .image,
+      .video {
+        display: flex;
+        flex-wrap: nowrap;
+        /*width: 50%;*/
+        height: auto;
+        max-width: 100%;
+      }
+
+      .title {
         color: rgb(0, 0, 0);
-        -webkit-text-stroke: 1pt rgb(0, 0, 0);
+        -webkit-text-stroke: 2px rgb(54, 48, 48);
+        text-shadow: 0px 0px 5px rgb(54, 48, 48);
+        font-family: APL;
+        font-size: 3em;
+        line-height: 50px;
+        display: inline-block;
+        text-decoration: underline;
+        text-decoration-thickness: 5px;
+        padding-top: 8px;
+        padding-left: 4px;
+      }
+
+      .sub-title {
+        color: rgb(0, 0, 0);
+        -webkit-text-stroke: 2.9px rgb(54, 48, 48);
+        font-family: APL;
+        font-size: 3em;
+        line-height: 40px;
+        padding-left: 80px;
+      }
+      .description {
+        font-family: CMU-Serif;
+        font-size: 1em;
+        line-height: 15px;
+        padding-right: 70px;
+        padding-left: 80px;
+        padding-top: 50px;
+        text-indent: 24px;
+      }
+      .sup-container {
+        display: grid;
+        grid-template-columns: 20% 80%;
+      }
+      #inline-grid {
+        display: grid;
+        grid-template-rows: auto 10px;
+        height: 100%;
+      }
+      #sidebar {
+        position: fixed;
+        width: 20%;
+        display: grid;
+        grid-template-rows: auto 300px;
+        height: 100vh;
+        line-height: 15px;
+      }
+      #sidbar-above {
+        display: flexbox;
+        letter-spacing: -1px;
+        margin-top: 5px;
+      }
+      a {
+        text-decoration: none;
+        color: black;
+        cursor: pointer;
+        text-decoration: underline;
+        letter-spacing: -1px;
+        margin-left: 4px !important;
+        margin-bottom: 40px !important;
+      }
+
+      /*a:hover {
+              letter-spacing: 2px;
+              display: inline-block;
+              transform: scaleY(0.5);
+              transform-origin: 0 0;
+              -webkit-text-stroke: 2px rgb(0, 0, 0);
+            }*/
+      .herz {
+        display: none;
+        pointer-events: none;
+        color: rgb(0, 0, 0);
+        padding-left: 20px;
+      }
+      a:hover,
+      .toggle:hover {
+        letter-spacing: 2px;
+      }
+      a:hover .herz {
+        display: inline;
+      }
+      /*
+            #textbox {
+              display: none;
+              position: absolute;
+              padding: 2px;
+              color: rgb(0, 0, 0);
+              z-index: 100000 !important;
+              width: 200px;
+              border: none;
+              border-radius: 2px;
+              box-shadow: rgba(213, 217, 217, 0.5) 0 2px 5px 0;
+              border: 1px solid #d5d9d9;
+            }
+            #textbox-close {
+              display: none;
+              position: absolute;
+              color: white;
+              background-color: #000000;
+              z-index: 100000 !important;
+            }
+            #close-button {
+              color: white;
+              text-decoration: none;
+            }*/
+      button {
+        background-color: rgb(255, 255, 255);
+        color: white;
+        border: none;
+        border-radius: 20px;
+        box-shadow: rgba(213, 217, 217, 0.5) 0 2px 5px 0;
+        border: 1px solid #d5d9d9;
+        cursor: pointer;
+        width: 23px;
+        height: 14px;
+        margin-left: 4px !important;
+      }
+      button:hover {
+        background-color: #f7fafa;
+      }
+      button:focus {
+        border-color: #ffffff;
+        box-shadow: rgba(161, 163, 163, 0.5) 0 2px 5px 0;
+        outline: 0;
+      }
+      .toggle {
+        margin-bottom: 30px !important;
+      }
+      #cb-toggle:checked + .toggle {
+        background-color: hsl(0, 0%, 0%);
+        color: white !important;
+      }
+      .hide-me {
+        opacity: 0;
+        height: 0;
+        width: 0;
+      }
+      #sidebar-mobile {
+        display: none;
+      }
+      /* ---------M O B I L E */
+      @media screen and (max-width: 600px) {
+        .container-wrapper {
+          flex-direction: column;
+          margin-bottom: 60px;
+        }
+        .text-container,
+        .image-container {
+          min-width: 100%;
+          padding: 0;
+        }
+        .title {
+          font-size: 2em;
+          line-height: 33px;
+        }
+        .sub-title {
+          text-align: center;
+          padding-left: 0;
+          font-size: 2em;
+          line-height: 33px;
+        }
+        .description {
+          font-size: 1em;
+          padding: 0;
+          -webkit-text-stroke: 0.15px rgb(255, 255, 255);
+        }
+        img {
+          margin: 0;
+          padding: 0;
+        }
+        .sup-container {
+          display: block;
+          margin-top: 200px;
+        }
+        #inline-grid,
+        #sidbar-above {
+          display: none;
+        }
+        a {
+          color: white;
+          line-height: 40px;
+        }
+        .text-container a {
+          color: black;
+          line-height: 15px;
+        }
+        #sidebar,
+        #sidebar-mobile {
+          text-align: center;
+          font-size: 3em;
+          line-height: 40px;
+          color: rgb(255, 255, 255);
+          -webkit-text-stroke: 0.5px rgb(0, 0, 0);
+          text-shadow: 0px 0px 2px rgba(0, 0, 0, 0.479);
+          font-family: APL;
+          text-decoration: none;
+          display: inline;
+          position: static;
+          width: auto;
+          height: auto;
+          margin-bottom: 20px;
+        }
+        #sidebar-mobile {
+          display: block;
+        }
       }
     </style>
   </head>
   <body>
-    <a id="ersterLink" href="http://webseite.de">tinekerres.de</a>
+    <div id="sidebar">
+      <div id="sidbar-above">
+        <!--<div style="display: flex"><button></button>&nbsp;stop</div>
+        <div style="display: flex"><button></button>&nbsp;add glitter</div>-->
+      </div>
+      <div>
+        <div id="cb-label">
+          <span id="toggle-state"></span>
+        </div>
+      </div>
+      <div style="align-self: end; margin-bottom: 10px">
+        <div>
+          <input
+            id="cb-toggle"
+            type="checkbox"
+            class="hide-me"
+            aria-labelledby="cb-label"
+          />
+          <label for="cb-toggle" class="toggle" style="color: black"
+            >tine kerres</label
+          >
+        </div>
+        <br /><a
+          href="mailto:c.kerres@gmx.net"
+          onclick="ersetzeUndOeffne(event, 'c.kerres@gmx.net', 2000)"
+          ><span class="herz">&#10084;</span>write me a message</a
+        ><br /><a
+          href="https://www.are.na/kerres-kerres/channels"
+          onclick="ersetzeUndOeffne(event, 'kerreskerres', 2000)"
+          ><span class="herz">&#10084;</span>are.na</a
+        ><br /><a
+          href="https://github.com/ChristineKerres"
+          onclick="ersetzeUndOeffne(event, 'christinekerres', 2000)"
+          ><span class="herz">&#10084;</span>github</a
+        ><br /><a
+          href="https://www.instagram.com/eni_t_ine/"
+          onclick="ersetzeUndOeffne(event, '@eni_t_ine', 2000)"
+          ><span class="herz">&#10084;</span>ig</a
+        >
+      </div>
+    </div>
+    <!--<div style="padding-left: 20%; letter-spacing: -1px">?</div>-->
+    <div class="sup-container">
+      <!--<div id="textbox">
+        <p>
+          Text
+        </p>
+      </div>
+      <div id="textbox-close">
+        <a href="#" onclick="schliesseTextBox()" id="close-button">x</a>
+      </div>-->
+
+      <div id="inline-grid">
+        <div></div>
+        <div></div>
+      </div>
+      <div>
+        <div class="container-wrapper">
+          <div class="text-container">
+            <div class="title">
+              ... Dancing in between Shiny Gloom and Glossy Doom ...
+            </div>
+            <div class="sub-title">choreographed by machines</div>
+            <p class="description">
+              This project is an attempt to describe the relationship between
+              users and computerized machines through a metaphorical lens,
+              visually conceptualized by the dynamics of a chicken-grill
+              relationship. In this symbolic representation, both parts are
+              understood as integral components of a performance, wherein
+              machines (aka grill) represents programmed concepts that
+              choreograph the actions of their users (aka chickens).
+              <br />&nbsp; &nbsp; &nbsp;Accompanying the installation is a
+              letter titled
+              <i> "To the Apathetic User of Arrogant Machines"</i> which speaks
+              to the user. It addresses the tendency of users to passively adapt
+              to the predetermined parameters set by software frameworks when
+              engaging with computer-aided machines. In this dynamic, the
+              characteristics of the program code determine the scope of user
+              actions in advance, leaving no room for ambiguity, interpretation,
+              or flexibility in interaction. <br /><i
+                style="-webkit-text-stroke: 1px black"
+                >&nbsp; &nbsp; &nbsp;Graduation Project, 2024</i
+              >
+              <a
+                href="mailto:c.kerres@gmx.net?body=Hi%20Tine,%0D%0A%0D%0ACan%20you%20send%20me%20your%20thesis%20to%20read?%0D%0A%0D%0ABest%20whishes,"
+                class="a-text"
+                ><i>(Read my thesis)</i></a
+              >
+            </p>
+          </div>
+          <div class="image-container">
+            <img
+              class="image"
+              src="projects/IMG_1362.JPG"
+              alt="&#9633; You should see a picture here :/"
+            />
+            <video
+              class="video"
+              muted
+              autoplay
+              loop
+              alt="&#9633; You should see a video here :/"
+              src="projects/dancing-in-between-shiny-gloom-and-glossy-doom_tine-kerres.mp4"
+            ></video>
+          </div>
+        </div>
+        <div class="container-wrapper">
+          <div class="text-container">
+            <div class="title">let them do their thing</div>
+            <div class="sub-title"></div>
+            <p class="description">
+              This experimental setup confronts artificial intelligence face to
+              face with itself, by setting the system to exist in a semi-closed
+              environment, receiving information and sending feedback to create
+              a self-regulated feedback loop over a conversation about
+              AI-generated images. It seems like artificial intelligence is
+              capable of interpreting, imagining, and communicating. Referring
+              to Friedrich Kittler‘s idea that "[...]
+              <i>computers want to communicate with computers. </i> [...]
+              <i
+                >Because the network is there for computers to be connected to
+                computers, to which keyboards and users can also be connected,
+                but don‘t have to be,</i
+              >"<sup style="font-size: 10px">1</sup>, in this setup the viewer
+              becomes an involuntary disruptor of the interaction between the
+              two computers. The audience is able to influence the exchange
+              through their presence by stepping in front of a monitor or
+              sneaking into the live feed of the dialog provided on a website
+              accessible via a smartphone. The experiment took place over two
+              days at Werkschau 2023, Mainz.
+              <a
+                href="mailto:c.kerres@gmx.net?body=Hi%20Tine,%0D%0A%0D%0ACan%20you%20send%20me%20your%20thesis%20to%20read?%0D%0A%0D%0ABest%20whishes,"
+                class="a-text"
+                ><i>(See transcript here)</i></a
+              ><br /><i>/Collaboration with Julia Kerres</i><br />
+
+              <i style="font-size: 0.7em; line-height: 12px">
+                1 TV Doku Spiegel Unberechenbarkeit 2/3
+                (https://www.youtube.com/watch?v=YO8W9ks71wc), uploaded on
+                26.04.2011 on YouTube</i
+              >
+              <br /><br />(process: computer1 takes a photo of computer2;
+              computer1 interprets the captured photo using a image-to-text AI
+              model and uses this description to generate an image with a
+              text-to-image AI model and display it on its screen; computer1
+              sends a message to computer2 via a WebSocket protocol to instruct
+              computer2 to perform the same steps)
+            </p>
+          </div>
+          <div class="image-container">
+            <img
+              class="image"
+              src="projects/let them do their thing-tinekerres.jpg"
+              alt="&#9633; You should see a picture here :/"
+            />
+            <img
+              class="image"
+              src="projects"
+              alt="&#9633; You should see a picture here :/"
+            />
+          </div>
+        </div>
+        <div class="container-wrapper">
+          <div class="text-container">
+            <div class="title">virtual viscosity</div>
+            <div class="sub-title">
+              Would you move differently if you knew that your physical
+              movements were displayed on a digital screen?
+            </div>
+            <p class="description">
+              Digital space is a viscous mass in which our bodies are trapped!
+              We are not free in a world we imagine to be a boundless space with
+              infinite possibilities of movement. The digital surface as a
+              mirror forces us to simultaneously rethink and evaluate our
+              movements <i>(online meetings)</i> or to execute them according to
+              preliminary considerations <i>(vlogs on YouTube)</i>. We have lost
+              the naturalness in our movements. The digital space is a stage,
+              movements become choreography.
+            </p>
+          </div>
+          <div class="image-container">
+            <img
+              class="image"
+              src="projects/virtual viscosity 01.png"
+              alt="&#9633; You should see a picture here :/"
+            />
+            <img
+              class="image"
+              src="projects/virtual viscosity 02.JPG"
+              alt="&#9633; You should see a picture here :/"
+            />
+            <video
+              class="video"
+              muted
+              autoplay
+              loop
+              alt="&#9633; You should see a video here :/"
+              src="projects/virtual-viscosity_tine-kerres.mp4"
+            ></video>
+          </div>
+        </div>
+        <div class="container-wrapper">
+          <div class="text-container">
+            <div class="title">flat-is-dead</div>
+            <div class="sub-title">
+              Bodies do not have just one shape and are not geometric at all!
+            </div>
+            <p class="description">
+              The transition from the analog world to the digital world is
+              rectangular! Why is the web reduced to a rigid two-dimensional
+              body? Compared to Tupperware, web content is dependent on external
+              shapes, with Tupperware being more advanced in its development due
+              to its adaptability to content (e.g. fruit containers). Flat is
+              dead is a critical approach to window-influenced web content in
+              comparison to the variety of shapes of food storage containers.
+              Visualized through an interactive web performance where length and
+              width of web pages are the triggering parameters for users to
+              interact with.
+              <a href="https://flat-is-dead.net/" class="a-text"
+                ><i>visit here</i></a
+              >
+            </p>
+          </div>
+          <div class="image-container">
+            <img
+              class="image"
+              src="projects/flat is dead 01.JPG"
+              alt="&#9633; You should see a picture here :/"
+            />
+            <img
+              class="image"
+              src="projects/flat is dead 02.JPG"
+              alt="&#9633; You should see a picture here :/"
+            />
+          </div>
+        </div>
+        <div class="container-wrapper">
+          <div class="text-container">
+            <div class="title">un heimelig</div>
+            <div class="sub-title">un confortable</div>
+            <p class="description">
+              Understanding the concept of space and security involves
+              acknowledging its boundaries and our placement within it. Our
+              intention is to challenge the perceived security of a space by
+              projecting a room from various moving angles and through multiple
+              recordings, exploring and challenge the unfamiliarity and
+              dissolution of physical boundaries. <br />Shown in the group
+              exhibition "Licht Raum Kunst", Lulu Galerie Mainz, November 2022
+              <br /><i>/Collaboration with Stella Bechtel and Judith Berger</i>
+            </p>
+          </div>
+          <div class="image-container">
+            <img
+              class="image"
+              src="projects/un heimelig-tinekerres.JPG"
+              alt="&#9633; You should see a picture here :/"
+            />
+            <video
+              class="video"
+              muted
+              autoplay
+              loop
+              alt="&#9633; You should see a video here :/"
+              src="projects/unheimelig_tine-kerres.mp4"
+            ></video>
+          </div>
+        </div>
+        <div class="container-wrapper">
+          <div class="text-container">
+            <div class="title">local.recreation-area</div>
+            <div class="sub-title">
+              The digital space has to be rebuilt with love by default!
+            </div>
+            <p class="description">
+              Technology has shaped the house we are forced to live in today and
+              its design is influencing us!
+              <sup style="font-size: 10px">1</sup> The digital space is built
+              far too strongly on the capitalist idea. It is not tailored to our
+              needs and that includes having a place for self-care. Using the
+              existing energies of technological environments
+              <i
+                >(hallucinating screen flicker; warmth of an overheated
+                processor; tactile experiences of fingerprints and dirt on a
+                screen; screen brightness level)</i
+              >, local.recreation-area provides a space to rest and reset.
+              Inspired by the physical manifestations of digital images by
+              Rafael Rozendaal and the artwork "Spiral Induction" by Tauba
+              Auerbach.<a
+                href="https://local.recreation-area.tinekerres.de/"
+                class="a-text"
+                ><i>visit here</i></a
+              >
+              <br /><i style="font-size: 0.7em; line-height: 12px">
+                1 cf. Ursula Franklin (1992): Anansi Press, Concord/Ontario</i
+              >
+            </p>
+          </div>
+          <div class="image-container">
+            <img
+              class="image"
+              src="projects/local.recreation-area-03-tinekerres.png"
+              alt="&#9633; You should see a picture here :/"
+            />
+            <img
+              class="image"
+              src="projects/local.recreation-area-02-tinekerres.JPG"
+              alt="&#9633; You should see a picture here :/"
+            />
+            <img
+              class="image"
+              src="projects/local.recreation-area-04-tinekerres.JPG"
+              alt="&#9633; You should see a picture here :/"
+            />
+          </div>
+        </div>
+        <div class="container-wrapper">
+          <div class="text-container">
+            <div class="title">programming Body</div>
+            <div class="sub-title">
+              A radical anthropocentrism as prophylactic speculation
+            </div>
+            <p class="description">
+              "<i
+                >I do not believe what modern philosophy says about mankind,
+                that we are beings similar to a kind of Pac-Man, eating up the
+                universe. I think we are ultra-sensitive chameleons which can
+                take on the colour of other things.</i
+              >"<sup style="font-size: 10px">1</sup> Wouldn't it be more
+              efficient to change ourselves to be independent of the
+              environment? Thinking about evolution, why can't we decide what
+              color we're going to adopt? Why don't we program the future by
+              anticipatory adaptation of our human bodies to the unstoppable
+              future changes in our environment? Why don't we get ahead of
+              evolution?
+              <a
+                href="https://docs.google.com/document/d/1pIvdPr0lfoZmI6ACv2eDxDoezlrfJRB2Hms2w_1fFcM/edit"
+                class="a-text"
+                ><i>read here</i></a
+              ><br /><i style="font-size: 0.7em; line-height: 12px">
+                1 Timothy Morton (2019): Nature is a racist concept, domus,
+                https://www.domusweb.it/en/design/2019/03/02/nature-is-a-racist-concept.html,
+                26.03.2022</i
+              >
+            </p>
+          </div>
+          <div class="image-container">
+            <img
+              class="image"
+              src="projects/Programming body-01-tinekerres.png"
+              alt="&#9633; You should see a picture here :/"
+            />
+            <img
+              class="image"
+              src="projects/Programming body-02-tinekerres.png"
+              alt="&#9633; You should see a picture here :/"
+            />
+          </div>
+        </div>
+        <div class="container-wrapper">
+          <div class="text-container">
+            <div class="title">advice-to-inbox</div>
+            <div class="sub-title">Everyone needs an advice sometimes!</div>
+            <p class="description">
+              <a
+                href="https://christinekerres.github.io/advice-to-inbox/"
+                class="a-text"
+                ><i>visit here</i></a
+              >
+            </p>
+          </div>
+          <div class="image-container">
+            <img
+              class="image"
+              src="projects/advice-to-inbox-01-tinekerres.JPG"
+              alt="&#9633; You should see a picture here :/"
+            />
+            <video
+              class="video"
+              muted
+              autoplay
+              loop
+              alt="&#9633; You should see a video here :/"
+              src="projects/advice-to-inbox-02-tinekerres.mov"
+            ></video>
+          </div>
+        </div>
+        <div class="container-wrapper">
+          <div class="text-container">
+            <div class="title">...</div>
+            <div class="sub-title"></div>
+            <p class="description"></p>
+          </div>
+          <div class="image-container">
+            <img
+              class="image"
+              src="projects/webhacking studio-tinekerres.heic"
+              alt="&#9633; You should see a picture here :/"
+            />
+            <video
+              class="video"
+              muted
+              autoplay
+              loop
+              alt="&#9633; You should see a video here :/"
+              src="projects/gda hallway-tinekerres.MOV"
+            ></video
+            ><img
+              class="image"
+              src="projects/pandemic dreams-01-tinekerres.jpg"
+              alt="&#9633; You should see a picture here :/"
+            /><img
+              class="image"
+              src="projects/pandemic dreams-02-tinekerres.jpg"
+              alt="&#9633; You should see a picture here :/"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="sidebar-mobile">
+      <div style="align-self: end; margin-bottom: 100px">
+        <div>
+          <div style="color: black">tine kerres</div>
+        </div>
+        <br /><a
+          href="mailto:c.kerres@gmx.net"
+          onclick="ersetzeUndOeffne(event, 'c.kerres@gmx.net', 2000)"
+          ><span class="herz">&#10084;</span>write me a message</a
+        ><br /><a
+          href="https://www.are.na/kerres-kerres/channels"
+          onclick="ersetzeUndOeffne(event, 'kerreskerres', 2000)"
+          ><span class="herz">&#10084;</span>are.na</a
+        ><br /><a
+          href="https://github.com/ChristineKerres"
+          onclick="ersetzeUndOeffne(event, 'christinekerres', 2000)"
+          ><span class="herz">&#10084;</span>github</a
+        ><br /><a
+          href="https://www.instagram.com/eni_t_ine/"
+          onclick="ersetzeUndOeffne(event, '@eni_t_ine', 2000)"
+          ><span class="herz">&#10084;</span>ig</a
+        >
+      </div>
+    </div>
     <script>
-      let startTime;
-      let changeTime = 2000;
-      let currentLink = document.getElementById("ersterLink");
+      var containerWrappers = document.querySelectorAll(".container-wrapper");
 
-      function linkClickHandlerToPortfolio(event) {
-        window.location.href = "http://google.de";
-      }
+      window.addEventListener("mousemove", function (event) {
+        // Überprüfe, ob die Bildschirmbreite größer als 600px ist
+        if (window.innerWidth > 600) {
+          var windowWidth = window.innerWidth;
+          var mouseX = event.clientX;
+          var textContainerWidth = ((windowWidth - mouseX) / windowWidth) * 100;
+          var imageContainerWidth = (mouseX / windowWidth) * 100;
 
-      // Funktion zur Behandlung von Link-Klicks
-      function linkClickHandler(event) {
-        event.preventDefault(); // Verhindert das Standardverhalten des Links
-        startTime = new Date().getTime();
+          containerWrappers.forEach(function (wrapper) {
+            wrapper.querySelector(".text-container").style.width =
+              textContainerWidth + "%";
+            wrapper.querySelector(".image-container").style.width =
+              imageContainerWidth + "%";
 
-        // Neuen Link erzeugen
-        var neuerLink = document.createElement("a");
-        neuerLink.href = "http://tinekerres.de";
-        neuerLink.textContent = "  /" + "tinekerres.de";
+            var imageContainer = wrapper.querySelector(".image-container");
+            var images = imageContainer.querySelectorAll(".image");
 
-        // Dem neuen Link den Eventlistener hinzufügen
-        neuerLink.addEventListener("click", linkClickHandler);
-
-        // Den neuen Link an den Body hinzufügen
-        document.body.appendChild(neuerLink);
-        currentLink = neuerLink;
-      }
-
-      function checkTime() {
-        let currentTime = new Date().getTime();
-        let elapsedTime = currentTime - startTime;
-        if (elapsedTime >= changeTime) {
-          // Ändern Sie den aktuellen Link
-          currentLink.style.color = "black";
-          currentLink.href = "tinekerres.de/portfolio";
-          currentLink.textContent = "  /" + "PORTFOLIO";
-          currentLink.removeEventListener("click", linkClickHandler);
-          currentLink.addEventListener("click", linkClickHandlerToPortfolio);
-        } else {
-          requestAnimationFrame(checkTime); // Überprüfen Sie weiterhin die Zeit, bis die Farbe geändert wird
+            images.forEach(function (image) {
+              if (image.offsetWidth < 300) {
+                wrapper.querySelector(".description").style.display = "none";
+              } else {
+                wrapper.querySelector(".description").style.display = "block";
+              }
+            });
+          });
         }
+      });
+
+      function ersetzeUndOeffne(event, ersatztext, delay) {
+        event.preventDefault();
+        var link = event.target;
+        link.textContent = ersatztext;
+        setTimeout(function () {
+          window.location.href = link.href;
+        }, delay);
+      } /*
+      function zeigeTextBox() {
+        var textbox = document.getElementById("textbox");
+        var textboxClose = document.getElementById("textbox-close");
+        var randomLeft = Math.floor(Math.random() * (window.innerWidth - 200));
+        var randomTop = Math.floor(Math.random() * (window.innerHeight - 100));
+        var randomLeftClose = Math.floor(
+          Math.random() * (window.innerWidth - 200)
+        );
+        var randomTopClose = Math.floor(
+          Math.random() * (window.innerHeight - 100)
+        );
+        textbox.style.left = randomLeft + "px";
+        textbox.style.top = randomTop + "px";
+        textbox.style.display = "block";
+        textboxClose.style.left = randomLeftClose + "px";
+        textboxClose.style.top = randomTopClose + "px";
+        textboxClose.style.display = "block";
       }
 
-      // Eventlistener für den ersten Link hinzufügen
-      document
-        .getElementById("ersterLink")
-        .addEventListener("click", linkClickHandler);
+      function schliesseTextBox() {
+        var textbox = document.getElementById("textbox");
+        var textboxClose = document.getElementById("textbox-close");
+        textbox.style.display = "none";
+        textboxClose.style.display = "none";
+      }*/
 
-      // Timer für die Prüfung der Klickzeit starten
-      document
-        .getElementById("ersterLink")
-        .addEventListener("mousedown", function () {
-          setTimeout(checkTime, changeTime);
-        });
+      document.addEventListener("copy", function (event) {
+        event.preventDefault();
+        var copiedText = window.getSelection().toString();
+        var modifiedText = copiedText.replace(/./g, "\u2661");
+        event.clipboardData.setData("text/plain", modifiedText);
+      });
+
+      var cb = document.querySelector("#cb-toggle");
+      cb.addEventListener(
+        "click",
+        function () {
+          var stateSpan = document.querySelector("#toggle-state");
+          var currentState;
+          if (cb.checked) {
+            currentState =
+              "<u>CV</u>  <br><br> *1995 <br><br> &nbsp;BA Graphic Design Hochschule Mainz 2019-2024 <br> &nbsp;Exchange at ÉSAD in Amiens (FR) 2021/2022 <br> &nbsp;Exchange at ArtEZ in Arnhem (NL) 2022/2023<br>&nbsp;Internship at Atelier Brenda🎔 (BE) 05-08 2023 <br><br> &nbsp; Tutor Designlabor Gutenberg Mainz 2022 <br> &nbsp; Scholarship Deutschlandstipendium 2021-2023 ";
+          } else {
+            currentState = "";
+          }
+          stateSpan.innerHTML = currentState;
+        },
+        false
+      );
     </script>
   </body>
 </html>
