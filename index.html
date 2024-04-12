@@ -394,12 +394,23 @@
             />
             <video
               class="video"
+              id="video"
               muted
               autoplay
               loop
+              playsinline
               alt="&#9633; You should see a video here :/"
               src="projects/dancing-in-between-shiny-gloom-and-glossy-doom_tine-kerres.mp4"
             ></video>
+            <img
+              class="image"
+              id="img"
+              muted
+              autoplay
+              loop
+              playsinline
+              src="projects/dancing-in-between-shiny-gloom-and-glossy-doom_tine-kerres.mp4"
+            />
           </div>
         </div>
         <div class="container-wrapper">
@@ -489,12 +500,23 @@
             />
             <video
               class="video"
+              id="video2"
               muted
               autoplay
               loop
+              playsinline
               alt="&#9633; You should see a video here :/"
               src="projects/virtual-viscosity_tine-kerres.mp4"
             ></video>
+            <img
+              class="image"
+              id="img2"
+              muted
+              autoplay
+              loop
+              playsinline
+              src="projects/virtual-viscosity_tine-kerres.mp4"
+            />
           </div>
         </div>
         <div class="container-wrapper">
@@ -555,12 +577,23 @@
             />
             <video
               class="video"
+              id="video3"
               muted
               autoplay
               loop
+              playsinline
               alt="&#9633; You should see a video here :/"
               src="projects/unheimelig_tine-kerres.mp4"
             ></video>
+            <img
+              class="image"
+              id="img3"
+              muted
+              autoplay
+              loop
+              playsinline
+              src="projects/unheimelig_tine-kerres.mp4"
+            />
           </div>
         </div>
         <div class="container-wrapper">
@@ -674,12 +707,23 @@
             />
             <video
               class="video"
+              id="video4"
               muted
               autoplay
               loop
+              playsinline
               alt="&#9633; You should see a video here :/"
               src="projects/advice-to-inbox-02-tinekerres.mov"
             ></video>
+            <img
+              class="image"
+              id="img4"
+              muted
+              autoplay
+              loop
+              playsinline
+              src="projects/advice-to-inbox-02-tinekerres.mov"
+            />
           </div>
         </div>
         <div class="container-wrapper">
@@ -696,13 +740,24 @@
             />
             <video
               class="video"
+              id="video5"
               muted
               autoplay
               loop
+              playsinline
               alt="&#9633; You should see a video here :/"
               src="projects/gda hallway-tinekerres.MOV"
-            ></video
-            ><img
+            ></video>
+            <img
+              class="image"
+              id="img5"
+              muted
+              autoplay
+              loop
+              playsinline
+              src="projects/gda hallway-tinekerres.MOV"
+            />
+            <img
               class="image"
               src="projects/pandemic dreams-01-tinekerres.jpg"
               alt="&#9633; You should see a picture here :/"
@@ -827,6 +882,21 @@
         },
         false
       );
+      var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+      if (isSafari) {
+        document.getElementById("video").style.display = "none";
+        document.getElementById("video2").style.display = "none";
+        document.getElementById("video3").style.display = "none";
+        document.getElementById("video4").style.display = "none";
+        document.getElementById("video5").style.display = "none";
+      } else {
+        document.getElementById("img").style.display = "none";
+        document.getElementById("img2").style.display = "none";
+        document.getElementById("img3").style.display = "none";
+        document.getElementById("img4").style.display = "none";
+        document.getElementById("img5").style.display = "none";
+      }
     </script>
   </body>
 </html>
