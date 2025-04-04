@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+      }
+      /* //////Text alignement center/////// */
+      .textbox {
+        padding-left: 10%;
+        padding-right: 10%;
+        width: 100%;
+        position: absolute;
+        text-align: center;
+        box-sizing: border-box;
+        font-size: 60px;
+        font-family: Monument Grotesk;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        margin: auto;
+        vertical-align: middle;
+        top: 25%;
+      }
+      /* //////Text alignement top and bottom/////// */
+      /*#h1 {
+        padding-left: 10%;
+        padding-right: 10%;
+        width: 100%;
+        position: absolute;
+        text-align: center;
+        box-sizing: border-box;
+        font-size: 60px;
+        font-family: Monument Grotesk;
+
+        margin: auto;
+        vertical-align: middle;
+      }
+      #h2 {
+        padding-left: 10%;
+        padding-right: 10%;
+        width: 100%;
+        position: absolute;
+        text-align: center;
+        box-sizing: border-box;
+        font-size: 60px;
+        font-family: Monument Grotesk;
+
+        margin: auto;
+        vertical-align: middle;
+        bottom: 1px;
+      }*/
+      @font-face {
+        font-family: Monument Grotesk;
+        src: url(src/ABCMonumentGrotesk-Regular-in\ Evolution\ 4.woff);
+      }
+      .noise {
+        --lines: 0.002px;
+        filter: blur(4px);
+
+        mask: repeating-radial-gradient(
+          circle at center,
+          #000,
+          var(--lines),
+          #000,
+          0,
+          /* transition hints make code easier to manage */ #0000,
+          calc(var(--lines) * 2),
+          #0000 0 /* trailing 0 is part of the hard stop logic */
+        );
+      }
+      .video {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <video class="video" autoplay loop muted>
+      <source src="src/08.mp4" type="video/mp4" />
+    </video>
+    <div class="textbox">
+      <div class="noise" id="h1">
+        Pavilion of the Republic of Kosovo
+        <br />The 19th International ArchitectureExhibition – La Biennale di
+        Venezia
+      </div>
+      <div class="noise" id="h2">
+        Erzë Dinarama: Emerging Assemblages <br />May 10 – November 24, 2025
+        <br />Venue: Arsenale, Sestiere Castello <br />Campo della Tana 2169/F,
+        30122 Venice, Italy
+      </div>
+    </div>
+
+    <!--Grain effect: https://nerdy.dev/hacky-css-noise-with-repeating-gradients-->
+  </body>
+</html>
