@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -21,7 +21,7 @@
         margin: 0;
         padding: 0;
         overflow: auto;
-        font-family: CMU-Serif;
+        font-family: CMU-Serif-Upright;
       }
 
       .container-wrapper {
@@ -58,17 +58,20 @@
       }
 
       .title {
+        display: inline-block;
+        transform: scaleY(1.4); /* 2 steht für doppelte Höhe */
+        padding-top: 0.5em;
         color: rgb(0, 0, 0);
-        -webkit-text-stroke: rgb(54, 48, 48) 2px;
-        text-shadow: rgb(54, 48, 48) 0px 0px 4px;
+        -webkit-text-stroke: rgb(0, 0, 0) 2px;
+        text-shadow: rgb(0, 0, 0) 0px 0px 4px;
         font-family: APL;
         font-size: 3em;
-        line-height: 50px;
+        line-height: 40px;
         display: inline-block;
         text-decoration: underline;
         text-decoration-thickness: 5px;
-        padding-top: 8px;
         padding-left: 4px;
+        padding-bottom: 20px;
 
         -webkit-text-decoration-line: underline !important;
         -webkit-text-decoration-color: #000000 !important;
@@ -78,20 +81,23 @@
       }
 
       .sub-title {
+        display: inline-block;
+        transform: scaleY(1.4);
+        padding-top: 0.2em;
         color: rgb(0, 0, 0);
-        -webkit-text-stroke: rgb(54, 48, 48) 2.9px;
+        -webkit-text-stroke: rgb(0, 0, 0) 2.9px;
         font-family: APL;
         font-size: 3em;
         line-height: 40px;
         padding-left: 80px;
       }
       .description {
-        font-family: CMU-Serif;
+        font-family: CMU-Serif-Upright;
         font-size: 1em;
         line-height: 15px;
-        padding-right: 70px;
+        /*padding-right: 70px;*/
         padding-left: 80px;
-        padding-top: 50px;
+        /*padding-top: 50px;*/
         text-indent: 24px;
       }
       .sup-container {
@@ -115,7 +121,6 @@
       #sidbar-above {
         display: flexbox;
         letter-spacing: -1px;
-        margin-top: 5px;
       }
       a {
         text-decoration: none;
@@ -172,24 +177,16 @@
         text-decoration: none;
       }*/
       button {
+        font-family: CMU-Serif;
+        line-height: 15px;
+        font-size: 1em;
         background-color: rgb(255, 255, 255);
-        color: white;
+        color: rgb(0, 0, 0);
         border: none;
         border-radius: 20px;
-        box-shadow: rgba(213, 217, 217, 0.5) 0 2px 5px 0;
-        border: 1px solid #d5d9d9;
+        box-shadow: rgba(255, 255, 255, 0.5) 0 2px 5px 0;
+        border: 1px solid #ffffff;
         cursor: pointer;
-        width: 23px;
-        height: 14px;
-        margin-left: 4px !important;
-      }
-      button:hover {
-        background-color: #f7fafa;
-      }
-      button:focus {
-        border-color: #ffffff;
-        box-shadow: rgba(161, 163, 163, 0.5) 0 2px 5px 0;
-        outline: 0;
       }
       .toggle {
         margin-bottom: 30px !important;
@@ -218,18 +215,24 @@
           padding: 0;
         }
         .title {
+          display: inline-block;
+          transform: scaleY(1.4);
+          padding-top: 0.5em;
           font-size: 2em;
           line-height: 33px;
-          -webkit-text-stroke: rgb(54, 48, 48) 2px;
-          text-shadow: rgb(54, 48, 48) 0px 0px 2px;
+          -webkit-text-stroke: rgb(0, 0, 0) 2px;
+          text-shadow: rgb(0, 0, 0) 0px 0px 2px;
           -webkit-text-decoration-line: underline !important;
-          -webkit-text-decoration-color: #000000 !important;
+          -webkit-text-decoration-color: rgb(0, 0, 0) 0px 0px 2px !important;
           -webkit-text-decoration-style: solid !important;
           -webkit-text-decoration-thickness: 1.5px !important;
           text-underline-offset: calc(4px);
         }
         .sub-title {
-          -webkit-text-stroke: rgb(54, 48, 48) 2px;
+          display: inline-block;
+          transform: scaleY(1.4);
+          padding-top: 0.5em;
+          -webkit-text-stroke: rgb(0, 0, 0) 2px;
           text-align: center;
           padding-left: 0;
           font-size: 2em;
@@ -294,6 +297,9 @@
         #sidebar-mobile {
           display: block;
         }
+        .art-freelance {
+          padding-left: 200px;
+        }
       }
     </style>
   </head>
@@ -304,7 +310,7 @@
           <!--<button onclick="zeigeTextBox()"></button>&nbsp;stop-->
         </div>
         <div style="display: flex">
-          <button onclick="toggleGlitter()"></button>&nbsp;add glitter
+          <button class="toggle" onclick="toggleGlitter()">add glitter</button>
         </div>
       </div>
       <div>
@@ -334,13 +340,19 @@
           onclick="ersetzeUndOeffne(event, 'kerreskerres', 2000)"
           ><span class="herz">&#10084;</span>are.na</a
         ><br /><a
-          href="https://www.instagram.com/tinekerres/"
+          href="https://github.com/ChristineKerres"
           target="_blank"
-          onclick="ersetzeUndOeffne(event, '@tinekerres', 2000)"
+          onclick="ersetzeUndOeffne(event, 'christinekerres', 2000)"
+          ><span class="herz">&#10084;</span>github</a
+        ><br /><a
+          href="https://www.instagram.com/eni_t_ine/"
+          target="_blank"
+          onclick="ersetzeUndOeffne(event, '@eni_t_ine', 2000)"
           ><span class="herz">&#10084;</span>ig</a
         >
       </div>
     </div>
+    <div class="art-freelance">Tine Kerres</div>
     <!--<div style="padding-left: 20%; letter-spacing: -1px">See projects in more details by moving to the right side</div>-->
     <div class="sup-container">
       <!--<div id="textbox">
@@ -355,6 +367,94 @@
         <div></div>
       </div>
       <div>
+        <div class="container-wrapper">
+          <div class="text-container">
+            <div class="title">
+              you were never meant to beat what was built to win
+            </div>
+            <div class="sub-title">I <3 LUSER</div>
+            <div>
+              Master Graduation project at Sandberg Instituut, presented at Best
+              Day of My Life, 2026, Looiersgracht 60, Amsterdam
+            </div>
+            <p class="description">
+              How can we reclaim agency without competing on machines terms. you
+              were never meant to beat what was built to win are hacked
+              advertisment screens, displaying highly ambiguous gossip over a
+              hijacked bluetooth connection. Spread throughout the exhibtion
+              space, they ask to rethink the terms of condition(ing) we all
+              agreed on, the pre-defined absurdities embedded in the default
+              logics of technological systems and our performance of scripted
+              clichés. Who gets to make sense of these pre-definitions? On terms
+              already set, this is a lost cause-a calculated tragedy of a loser.
+              And that luser is you. By drawing on the loser's condition of
+              never winning the work embraces the user’s incompetence, their
+              intuitive capacity to interpret ambiguity. It is all about the
+              second thought: rethinking the literal, the establishedthe imposed
+              version of reality technology presents to us. In reclaiming
+              tech-vernacular, the displayed text turns into a bypassed insider
+              joke, a hijacked misunderstanding, a reflexive parody, inciting
+              the system to implode from within. Let’s laugh about defaults,
+              tight-lipped, refusing to reveal the punchlines.
+            </p>
+          </div>
+          <div class="image-container">
+            <img
+              class="image"
+              src="projects/ywnmtbwwbtw-04-tinekerres.png"
+              alt="&#9633; You should see a picture here :/"
+            />
+            <img
+              class="image"
+              src="projects/ywnmtbwwbtw-03-tinekerres.png"
+              alt="&#9633; You should see a picture here :/"
+            />
+            <img
+              class="image"
+              src="projects/ywnmtbwwbtw-01-tinekerres.png"
+              alt="&#9633; You should see a picture here :/"
+            />
+            <img
+              class="image"
+              src="projects/ywnmtbwwbtw-02-tinekerres.png"
+              alt="&#9633; You should see a picture here :/"
+            />
+          </div>
+        </div>
+        <div class="container-wrapper">
+          <div class="text-container">
+            <div class="title">The Algorithmic Altar</div>
+            <div class="sub-title">
+              at the Gerrit Rietveld Pavilion, Amsterdam - - 03.12. - 05.12.2025
+            </div>
+            <p class="description">
+              The Algorithmic Altar is a multi-day event at the Pavilion of the
+              Gerrit Rietveld Academie in Amsterdam, coorganised/ hosted
+              together with Adele Stroh and kindly supported by Publics &
+              Projects Rietveld. Through an opening - lecture, a workshop and
+              sound performances, The Algorithmic Altar invites visitors to step
+              into the obfuscated glas box and explore collectively a space
+              where code and ritual converge and offer a new view on technology,
+              not merely as a tool, but as the continuation of our oldest magic:
+              transforming desire into form, and imagination into world. With
+              contributions from Hanneke Klaver + Milan Gress (Workshop: holding
+              space for defying gravity), Julia Kerres (constribution to set
+              design) and sound performances by servicekit, XONYA, krai, emeel
+            </p>
+          </div>
+          <div class="image-container">
+            <img
+              class="image"
+              src="projects/algorithmicaltars-02-tinekerres.jpg"
+              alt="&#9633; You should see a picture here :/"
+            />
+            <img
+              class="image"
+              src="projects/algorithmicaltars-03-tinekerres.jpg"
+              alt="&#9633; You should see a picture here :/"
+            />
+          </div>
+        </div>
         <div class="container-wrapper">
           <div class="text-container">
             <div class="title">
@@ -628,7 +728,7 @@
             />
           </div>
         </div>
-       <!-- <div class="container-wrapper">
+        <!--<div class="container-wrapper">
           <div class="text-container">
             <div class="title">pandemic dreams</div>
             <div class="sub-title"></div>
@@ -854,7 +954,7 @@
     </div>
     <footer style="letter-spacing: -1px; font-family: CMU-Serif-Upright">
       <span style="font-size: 10px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;©</span>
-      <i>Tine Kerres, last updated 04/2024, <a href="">Imprint</a></i>
+      <i>Tine Kerres, last updated 08/2026, <a href="">Imprint</a></i>
     </footer>
     <div id="sidebar-mobile">
       <div style="align-self: end; margin-bottom: 100px">
@@ -876,9 +976,9 @@
           onclick="ersetzeUndOeffne(event, 'christinekerres', 2000)"
           ><span class="herz">&#10084;</span>github</a
         ><br /><a
-          href="https://www.instagram.com/tinekerres/"
+          href="https://www.instagram.com/eni_t_ine/"
           target="_blank"
-          onclick="ersetzeUndOeffne(event, '@tinekerres', 2000)"
+          onclick="ersetzeUndOeffne(event, '@eni_t_ine', 2000)"
           ><span class="herz">&#10084;</span>ig</a
         >
       </div>
@@ -980,18 +1080,18 @@
           var currentState;
           if (cb.checked) {
             currentState =
-              "Tine Kerres<br><br><u>CV</u>  <br><br> *1995 <br><br> &nbsp;BA Graphic Design Hochschule Mainz 2019-2024 <br> &nbsp;Exchange at ÉSAD in Amiens (FR) 2021/2022 <br> &nbsp;Exchange at ArtEZ in Arnhem (NL) 2022/2023<br>&nbsp;Internship at Atelier Brenda&#10084; (BE) 05-08 2023 <br>&nbsp;MA Design Sandberg Instituut (NL) 2024-2026 <br><br> &nbsp; Tutor Designlabor Gutenberg Mainz 2022 <br> &nbsp; Scholarship Deutschlandstipendium 2021-2023 ";
+              "<b>Tine Kerres </b><br><br>((she/her, 1995, Amsterdam/Berlin based) likes to immerse herself in the realm of technological spaces, to be carried away by their violent pace and to contemplate their influence on the body – – as human // user // tag– – located IRL, on a URL, or somewhere in between. Her visual translations are conceptualised in ({non––)) literal non)sense and are taking shape in mis scripted )web–)performances + poetic speculations + + embodied metaphors + + +<br></b><br><br> &nbsp;<b>2019-2024</b>::: BA Graphic Design Hochschule Mainz <br> &nbsp;<b> 2021/2022</b>::: Exchange at ÉSAD in Amiens (FR) <br> &nbsp;<b>2022/2023</b>::: Exchange at ArtEZ in Arnhem (NL) <br>&nbsp;<b>05-08 2023</b>::: Internship at Atelier Brenda (Nana Esi & Sophie Keij)&#10084; (BE) <br><b>&nbsp;09 2024-08 2025</b>::: Assistant at Atelier Brenda (Nana Esi & Sophie Keij)&#10084; (BE) <br>&nbsp;<b>2024-2026</b>:::MA Design Sandberg Instituut (NL) <br><br> &nbsp; <b>2022</b>::: Tutor Designlabor Gutenberg Mainz <br> &nbsp;<b>2021-2023</b>::: Scholarship Deutschlandstipendium ";
           } else {
             currentState = "";
           }
           stateSpan.innerHTML = currentState;
         },
-        false
+        false,
       );
       ////////G L I T T E R ※⁖⁝⁙↭↜⇴⊹⋱⊱⊰∵≖⋇∣⚵⚶⛮☙⚂⚚⛈⛬
       function toggleGlitter() {
         var elements = document.querySelectorAll(
-          ".title, .sub-title, .description"
+          ".title, .sub-title, .description",
         );
         elements.forEach(function (element) {
           if (element.classList.contains("glittered")) {
